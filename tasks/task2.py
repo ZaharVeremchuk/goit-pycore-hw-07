@@ -5,7 +5,7 @@ from Record import Record
 
 # Decorator
 def input_error(func):
-    @wraps(func)                            # To get metadata of inner function in future
+    @wraps(func) # To get metadata of inner function in future
     def inner(*args, **kwargs):
         # Handle exception
         try:
@@ -36,6 +36,7 @@ def add_contact(args, book: AddressBook):
     if phone:
         record.add_phone(phone)
     return message
+
 # Use decorator for func 
 @input_error
 def change_contact(args, book: AddressBook):
@@ -59,6 +60,7 @@ def show_phone(args, book: AddressBook):
         return f'Name: {name}, phones: {record.phones}'
     return 'User doesn\'t exist'
 
+# Use decorator for func 
 @input_error
 def add_birthday(args, book: AddressBook):
     name, birthday, *_  = args
@@ -67,6 +69,7 @@ def add_birthday(args, book: AddressBook):
         return record.add_birthday(birthday)
     return "User with this name not found"
 
+# Use decorator for func 
 @input_error
 def show_birthday(args, book: AddressBook):
     name = args[0]
@@ -79,6 +82,7 @@ def show_birthday(args, book: AddressBook):
     else:
         return "User with this name not found"
 
+# Use decorator for func 
 @input_error
 def birthdays(book: AddressBook):
     return book.get_upcoming_birthdays()

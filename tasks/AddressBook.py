@@ -5,27 +5,31 @@ import re
 
 class AddressBook(UserDict):
 
+    # Object to str
     def __str__(self) -> str:
         text = ""
         for record in self.data.values():
             text += f"{record} \n"
         return text
-         
     
+    # Add record to address book
     def add_record(self, record: Record):
           self.data[record.name] = record
 
+    # Find record by name
     def find(self, name: str) -> Record:
           return self.data.get(name)
     
+    # Delete record by name
     def delete(self, name: str) -> None:
           self.data.pop(name)
     
+    # Get all upcoming birthdays
     def get_upcoming_birthdays(self) -> list:
                 
         today = datetime.today().date()                                             # Create today date
         next_week_birthday = []
-        pattern = "%d.%m.%Y"
+        pattern = "%d.%m.%Y"                                                        # Pattern to date
 
         for name, record in self.data.items():
             if record.birthday is not None:                                         # Check if record has birthday

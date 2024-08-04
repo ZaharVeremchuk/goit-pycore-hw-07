@@ -43,7 +43,6 @@ if __name__ == "__main__":
 
     # New task (MODULE 10)
     john.add_birthday("06.08.1999")
-    print("Nice")
     print(john)
 
     print(book.get_upcoming_birthdays())
